@@ -44,6 +44,37 @@ namespace ContactBook
             Console.WriteLine("\nNew added contact\n");
             DisplayContacts();
         }
+        public void EditContact()
+        {
+            Console.WriteLine("-------------------------------------------------\n");
+            Console.WriteLine("Enter the first Name to edit the details");
+            string firstName = Console.ReadLine();
+            foreach (var ele in contacts)
+            {
+                if (ele.firstName.Equals(firstName))
+                {
+                    Console.WriteLine("\nContact Found\n");
+                    Console.WriteLine("Enter the new first name to Edit");
+                    ele.firstName = Console.ReadLine();
+                    Console.WriteLine("Enter the new last name to Edit");
+                    ele.lastName = Console.ReadLine();
+                    Console.WriteLine("Enter new address to Edit");
+                    ele.address = Console.ReadLine();
+                    Console.WriteLine("Enter new city to Edit");
+                    ele.city = Console.ReadLine();
+                    Console.WriteLine("Enter new state to Edit");
+                    ele.state = Console.ReadLine();
+                    Console.WriteLine("Enter new zipcode to Edit");
+                    ele.zip = Console.ReadLine();
+                    Console.WriteLine("Enter the new phonenumber to Edit");
+                    ele.phoneNumber = Console.ReadLine();
+                    Console.WriteLine("Enter the new email to Edit");
+                    ele.email = Console.ReadLine();
+                    Console.WriteLine("\nNew edited contact is\n");
+                    DisplayContacts();
+                }
+            }
+        }
         public void DisplayContacts()
         {
             foreach (var contact in contacts)
