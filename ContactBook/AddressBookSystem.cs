@@ -19,7 +19,31 @@ namespace ContactBook
             contacts.Add(personDetails);
             DisplayContacts();
         }
+        public void AddNewContact()
+        {
+            Console.WriteLine("-----------------------------------------------\n");
+            Console.WriteLine("Create new contact\n");
+            Console.Write("Enter your First Name: ");
+            string firstName = Console.ReadLine();
+            Console.Write("Enter your Last Name: ");
+            string lastName = Console.ReadLine();
+            Console.Write("Enter your Address: ");
+            string address = Console.ReadLine();
+            Console.Write("Enter your City: ");
+            string city = Console.ReadLine();
+            Console.Write("Enter your State: ");
+            string state = Console.ReadLine();
+            Console.Write("Enter your Zipcode: ");
+            string zip = Console.ReadLine();
+            Console.Write("Enter your Phone Number: ");
+            string phoneNumber = Console.ReadLine();
+            Console.Write("Enter your EmailID: ");
+            string email = Console.ReadLine();
 
+            AddContact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+            Console.WriteLine("\nNew added contact\n");
+            DisplayContacts();
+        }
         public void DisplayContacts()
         {
             foreach (var contact in contacts)
