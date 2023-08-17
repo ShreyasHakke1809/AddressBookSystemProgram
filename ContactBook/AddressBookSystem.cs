@@ -75,6 +75,26 @@ namespace ContactBook
                 }
             }
         }
+        public void DeleteContacts()
+        {
+            Console.WriteLine("-------------------------------------------------\n");
+            Console.WriteLine("\nYou want to delete contact\n");
+            Console.WriteLine("Enter the first Name");
+            string FirstName = Console.ReadLine();
+            Console.WriteLine("Enter the last Name");
+            string LastName = Console.ReadLine();
+            // Person person = new Person();
+            foreach (var contact in contacts.ToList())
+            {
+                if (contact.firstName.Equals(FirstName) && contact.lastName.Equals(LastName))
+                {
+                    Console.WriteLine("RemoveContact" + contact);
+                    contacts.Remove(contact);
+                    Console.WriteLine("Contact removed successfully");
+                }
+            }
+            DisplayContacts();
+        }
         public void DisplayContacts()
         {
             foreach (var contact in contacts)

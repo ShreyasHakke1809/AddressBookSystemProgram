@@ -6,7 +6,7 @@
         {
             Console.WriteLine("Welcome to Address Book System");
             AddressBookSystem address = new AddressBookSystem();
-            Console.WriteLine("\n1.Create contact\n2.Add new contact\n3.Edit contact");
+            Console.WriteLine("\n1.Create contact\n2.Add new contact\n3.Edit contact\n4.Delete Contact");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -20,6 +20,9 @@
                     break;
                 case 3:
                     address.EditContact();
+                    break;
+                case 4:
+                    address.DeleteContacts();
                     break;
             }
           
