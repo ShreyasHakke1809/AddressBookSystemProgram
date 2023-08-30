@@ -6,16 +6,24 @@
         Dictionary<string, List<Contact>> multipleAddressBook = new Dictionary<string, List<Contact>>();
         public List<Contact> AddNewContact()
         {
-            Console.WriteLine("How many contacts you wants to create");
+            Console.WriteLine("How many contacts you want to create");
             int n = Convert.ToInt32(Console.ReadLine());
-            Contact contact = new Contact();
             int i = 0;
             while (i < n)
             {
                 Console.WriteLine("-----------------------------------------------\n");
                 Console.WriteLine("Create new contact\n");
+                Contact contact = new Contact();
+
                 Console.Write("Enter your First Name: ");
-                contact.firstName = Console.ReadLine();
+                string firstName = Console.ReadLine();
+                bool isDuplicate = listofContacts.Any(existingContact => existingContact.firstName.Equals(firstName));
+                if (isDuplicate)
+                {
+                    Console.WriteLine("Contact with the same first name already exists. Please enter a different first name.");
+                    continue;
+                }
+                contact.firstName = firstName;
                 Console.Write("Enter your Last Name: ");
                 contact.lastName = Console.ReadLine();
                 Console.Write("Enter your Address: ");
@@ -158,6 +166,7 @@
                     break;
                 }
             }
+            DisplayContacts();
         }
         public void DisplayAddressBooks()
         {

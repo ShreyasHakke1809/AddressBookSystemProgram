@@ -6,7 +6,7 @@
         {
             Console.WriteLine("Welcome to Address Book System");
             AddressBookSystem address = new AddressBookSystem();
-            bool loopAgain = true;
+            /*bool loopAgain = true;
             while (loopAgain)
             {
                 Console.WriteLine("n1.Add new contact\n2.Add new address book\n3.Display Address book\n4.Edit contact\n5.Delete Contact");
@@ -34,8 +34,12 @@
                         loopAgain = false;
                         break;
 
-                }
-            }
+                }*/
+            //address.AddNewContact();
+            //address.DisplayContacts();
+            address.AddMultipleAddressBooks();
+            address.DisplayAddressBooks();
+
         }
     }
 }
