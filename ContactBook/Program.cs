@@ -6,26 +6,36 @@
         {
             Console.WriteLine("Welcome to Address Book System");
             AddressBookSystem address = new AddressBookSystem();
-            Console.WriteLine("\n1.Create contact\n2.Add new contact\n3.Edit contact\n4.Delete Contact");
-            int option = Convert.ToInt32(Console.ReadLine());
-            switch (option)
+            bool loopAgain = true;
+            while (loopAgain)
             {
-                case 1:
-                    address.AddContact("Shreyas", "Hakke", "Kavalapur", "Miraj", "Maharashtra", "416306", "9673215173", "shreyashakke1809@gmail.com");
-                    Console.WriteLine("-----------");
-                    address.DisplayContacts();
-                    break;
-                case 2:
-                    address.AddNewContact();
-                    break;
-                case 3:
-                    address.EditContact();
-                    break;
-                case 4:
-                    address.DeleteContacts();
-                    break;
+                Console.WriteLine("n1.Add new contact\n2.Add new address book\n3.Display Address book\n4.Edit contact\n5.Delete Contact");
+                int option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        address.AddNewContact();
+                        address.DisplayContacts();
+                        break;
+                    case 2:
+                        address.AddMultipleAddressBooks();
+                        break;
+                    case 3:
+                        address.AddMultipleAddressBooks();
+                        address.DisplayAddressBooks();
+                        break;
+                    case 4:
+                        address.EditContact();
+                        break;
+                    case 5:
+                        address.DeleteContacts();
+                        break;
+                    case 6:
+                        loopAgain = false;
+                        break;
+
+                }
             }
-          
         }
     }
 }
