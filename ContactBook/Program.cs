@@ -10,7 +10,8 @@
             while (loopAgain)
             {
                 Console.WriteLine("n1.Add new contact\n2.Add new address book\n3.Display Address book\n4.Edit contact\n5.Delete Contact\n" +
-                    "6.Search contact by city or state\n7.View person by city or state\n8.Get city or state count\n9.Sort the entries in the address book alphabetically by Person’s name");
+                    "6.Search contact by city or state\n7.View person by city or state\n8.Get city or state count\n9.Sort the entries in the address book alphabetically by Person’s name" +
+                    "\n9.Sort the entries in the address book by City,State or Zip");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -45,6 +46,11 @@
                         address.SortAddressBookByName();
                         break;
                     case 10:
+                        address.SortAddressBookByCity();
+                        address.SortAddressBookByState();
+                        address.SortAddressBookByZip();
+                        break;
+                    case 11:
                         loopAgain = false;
                         break;
 

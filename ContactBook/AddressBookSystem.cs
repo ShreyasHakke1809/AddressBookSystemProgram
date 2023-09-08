@@ -276,9 +276,73 @@
             {
                 List<Contact> contactsInAddressBook = multipleAddressBook[addressBookName];
 
-                List<Contact> sortedContacts = contactsInAddressBook.OrderBy(contact => contact.FullName).ToList();
+                List<Contact> sortedContacts = contactsInAddressBook.OrderBy(contact => contact.firstName).ToList();
 
                 Console.WriteLine($"Sorted Contacts in Address Book '{addressBookName}' by Name:");
+                foreach (Contact contact in sortedContacts)
+                {
+                    Console.WriteLine(contact);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Address book not found.");
+            }
+        }
+        public void SortAddressBookByCity()
+        {
+            string addressBookName = Console.ReadLine();
+            if (multipleAddressBook.ContainsKey(addressBookName))
+            {
+                List<Contact> contactsInAddressBook = multipleAddressBook[addressBookName];
+
+                List<Contact> sortedContacts = contactsInAddressBook.OrderBy(contact => contact.city).ToList();
+
+                Console.WriteLine($"Sorted Contacts in Address Book '{addressBookName}' by City:");
+                foreach (Contact contact in sortedContacts)
+                {
+                    Console.WriteLine(contact);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Address book not found.");
+            }
+        }
+
+        public void SortAddressBookByState()
+        {
+            string addressBookName = Console.ReadLine();
+
+            if (multipleAddressBook.ContainsKey(addressBookName))
+            {
+                List<Contact> contactsInAddressBook = multipleAddressBook[addressBookName];
+
+                List<Contact> sortedContacts = contactsInAddressBook.OrderBy(contact => contact.state).ToList();
+
+                Console.WriteLine($"Sorted Contacts in Address Book '{addressBookName}' by State:");
+                foreach (Contact contact in sortedContacts)
+                {
+                    Console.WriteLine(contact);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Address book not found.");
+            }
+        }
+
+        public void SortAddressBookByZip()
+        {
+            string addressBookName = Console.ReadLine();
+
+            if (multipleAddressBook.ContainsKey(addressBookName))
+            {
+                List<Contact> contactsInAddressBook = multipleAddressBook[addressBookName];
+
+                List<Contact> sortedContacts = contactsInAddressBook.OrderBy(contact => contact.zip).ToList();
+
+                Console.WriteLine($"Sorted Contacts in Address Book '{addressBookName}' by Zip:");
                 foreach (Contact contact in sortedContacts)
                 {
                     Console.WriteLine(contact);
