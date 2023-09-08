@@ -10,7 +10,7 @@
             while (loopAgain)
             {
                 Console.WriteLine("n1.Add new contact\n2.Add new address book\n3.Display Address book\n4.Edit contact\n5.Delete Contact\n" +
-                    "6.Search contact by city or state\n7.View person by city or state");
+                    "6.Search contact by city or state\n7.View person by city or state\n8.Get city or state count");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -38,6 +38,10 @@
                         address.ViewByCityOrState();
                         break;
                     case 8:
+                        int citycount = address.GetContactCountByCity();
+                        int statecount = address.GetContactCountByState();
+                        break;
+                    case 9:
                         loopAgain = false;
                         break;
 
