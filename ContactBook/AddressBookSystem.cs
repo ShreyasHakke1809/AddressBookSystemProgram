@@ -238,6 +238,58 @@
                 Console.WriteLine($"No contacts found in any address book for {searchQuery}");
             }
         }
+        public int GetContactCountByCity()
+        {
+            string city = Console.ReadLine();
+            int count = 0;
+
+            foreach (KeyValuePair<string, List<Contact>> addressBook in multipleAddressBook)
+            {
+                List<Contact> contactsInAddressBook = addressBook.Value;
+                count += contactsInAddressBook.Count(contact =>
+                    contact.city.Equals(city, StringComparison.OrdinalIgnoreCase));
+            }
+
+            return count;
+        }
+
+        public int GetContactCountByState()
+        {
+            string state = Console.ReadLine();
+            int count = 0;
+
+            foreach (KeyValuePair<string, List<Contact>> addressBook in multipleAddressBook)
+            {
+                List<Contact> contactsInAddressBook = addressBook.Value;
+                count += contactsInAddressBook.Count(contact =>
+                    contact.state.Equals(state, StringComparison.OrdinalIgnoreCase));
+            }
+
+            return count;
+        }
+        public void SortAddressBookByName()
+        {
+            Console.WriteLine("Enter the address book name you want to sort by name:");
+            string addressBookName = Console.ReadLine();
+
+            if (multipleAddressBook.ContainsKey(addressBookName))
+            {
+                List<Contact> contactsInAddressBook = multipleAddressBook[addressBookName];
+
+                List<Contact> sortedContacts = contactsInAddressBook.OrderBy(contact => contact.FullName).ToList();
+
+                Console.WriteLine($"Sorted Contacts in Address Book '{addressBookName}' by Name:");
+                foreach (Contact contact in sortedContacts)
+                {
+                    Console.WriteLine(contact);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Address book not found.");
+            }
+        }
+
         public void DisplayContacts()
         {
             foreach (var contact in listofContacts)
