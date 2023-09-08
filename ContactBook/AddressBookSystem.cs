@@ -180,6 +180,34 @@
                 }
             }
         }
+        public void SearchByCityOrState()
+        {
+            Console.WriteLine("Enter the city or state to search for contacts:");
+            string searchQuery = Console.ReadLine();
+
+            bool found = false;
+
+            foreach (KeyValuePair<string, List<Contact>> addressBook in multipleAddressBook)
+            {
+                Console.WriteLine($"Searching in Address Book: {addressBook.Key}");
+                List<Contact> matchingContacts = addressBook.Value
+                    .Where(contact => contact.city.Equals(searchQuery, StringComparison.OrdinalIgnoreCase) ||
+                                       contact.state.Equals(searchQuery, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+
+                if (matchingContacts.Any())
+                {
+                    matchingContacts.ForEach(contact => Console.WriteLine(contact));
+                    found = true;
+                }
+            }
+
+            if (!found)
+            {
+                Console.WriteLine($"No contacts found in any address book for {searchQuery}");
+            }
+        }
+
         public void DisplayContacts()
         {
             foreach (var contact in listofContacts)

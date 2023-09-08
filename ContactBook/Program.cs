@@ -6,10 +6,11 @@
         {
             Console.WriteLine("Welcome to Address Book System");
             AddressBookSystem address = new AddressBookSystem();
-            /*bool loopAgain = true;
+            bool loopAgain = true;
             while (loopAgain)
             {
-                Console.WriteLine("n1.Add new contact\n2.Add new address book\n3.Display Address book\n4.Edit contact\n5.Delete Contact");
+                Console.WriteLine("n1.Add new contact\n2.Add new address book\n3.Display Address book\n4.Edit contact\n5.Delete Contact\n" +
+                    "6.Search contact by city or state");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -31,15 +32,14 @@
                         address.DeleteContacts();
                         break;
                     case 6:
+                        address.SearchByCityOrState();
+                        break;
+                    case 7:
                         loopAgain = false;
                         break;
 
-                }*/
-            //address.AddNewContact();
-            //address.DisplayContacts();
-            address.AddMultipleAddressBooks();
-            address.DisplayAddressBooks();
-
+                }
+            }
         }
     }
 }
