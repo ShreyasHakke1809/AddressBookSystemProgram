@@ -207,7 +207,37 @@
                 Console.WriteLine($"No contacts found in any address book for {searchQuery}");
             }
         }
+        public void ViewByCityOrState()
+        {
+            Console.WriteLine("Enter the city or state to search for contacts:");
+            string searchQuery = Console.ReadLine();
+            bool found = false;
 
+            foreach (KeyValuePair<string, List<Contact>> addressBook in multipleAddressBook)
+            {
+                Console.WriteLine($"Searching in Address Book: {addressBook.Key}");
+                List<Contact> matchingContacts = addressBook.Value
+                    .Where(contact =>
+                        contact.city.Equals(searchQuery, StringComparison.OrdinalIgnoreCase) ||
+                        contact.state.Equals(searchQuery, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+
+                if (matchingContacts.Any())
+                {
+                    Console.WriteLine("Matching Contacts:");
+                    foreach (Contact matchingContact in matchingContacts)
+                    {
+                        Console.WriteLine(matchingContact);
+                    }
+                    found = true;
+                }
+            }
+
+            if (!found)
+            {
+                Console.WriteLine($"No contacts found in any address book for {searchQuery}");
+            }
+        }
         public void DisplayContacts()
         {
             foreach (var contact in listofContacts)

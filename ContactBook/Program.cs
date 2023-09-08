@@ -10,7 +10,7 @@
             while (loopAgain)
             {
                 Console.WriteLine("n1.Add new contact\n2.Add new address book\n3.Display Address book\n4.Edit contact\n5.Delete Contact\n" +
-                    "6.Search contact by city or state");
+                    "6.Search contact by city or state\n7.View person by city or state");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -35,6 +35,9 @@
                         address.SearchByCityOrState();
                         break;
                     case 7:
+                        address.ViewByCityOrState();
+                        break;
+                    case 8:
                         loopAgain = false;
                         break;
 
