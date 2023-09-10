@@ -11,7 +11,7 @@
             {
                 Console.WriteLine("n1.Add new contact\n2.Add new address book\n3.Display Address book\n4.Edit contact\n5.Delete Contact\n" +
                     "6.Search contact by city or state\n7.View person by city or state\n8.Get city or state count\n9.Sort the entries in the address book alphabetically by Person’s name" +
-                    "\n9.Sort the entries in the address book by City,State or Zip");
+                    "\n10.Sort the entries in the address book by City,State or Zip\n11.Write or read to .txt File");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -51,6 +51,10 @@
                         address.SortAddressBookByZip();
                         break;
                     case 11:
+                        address.WriteToTextFile();
+                        address.ReadFromTextFile();
+                        break;
+                    case 12:
                         loopAgain = false;
                         break;
 

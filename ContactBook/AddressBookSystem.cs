@@ -353,7 +353,83 @@
                 Console.WriteLine("Address book not found.");
             }
         }
+        /* public void WriteToTextFile()
+         {
+             string path = @"C:\Users\shrey\source\repos\ContactBook\ContactBook\FileIo.txt";
+             try
+             {
+                 using (StreamWriter writer = new StreamWriter(path))
+                 {
+                     foreach (var contact in listofContacts)
+                     {
+                         writer.WriteLine($"First Name: {contact.firstName}");
+                         writer.WriteLine($"Last Name: {contact.lastName}");
+                         writer.WriteLine($"Address: {contact.address}");
+                         writer.WriteLine($"City: {contact.city}");
+                         writer.WriteLine($"State: {contact.state}");
+                         writer.WriteLine($"Zipcode: {contact.zip}");
+                         writer.WriteLine($"Phone Number: {contact.phoneNumber}");
+                         writer.WriteLine($"Email: {contact.email}");
+                         writer.WriteLine("-----------------------------------------------");
+                     }
+                 }
+                 Console.WriteLine($"Address book data written to {path}.");
+             }
+             catch (Exception ex)
+             {
+                 Console.WriteLine($"Error writing to the file: {ex.Message}");
+             }
+         }*/
 
+        public void ReadFromTextFile()
+        {
+            string path = @"C:\Users\shrey\source\repos\ContactBook\ContactBook\FileIo.txt";
+            using (StreamReader sr = File.OpenText(path))
+            {
+                string s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
+            }
+            Console.ReadKey();
+        }
+        /*string path = @"C:\Users\shrey\source\repos\ContactBook\ContactBook\FileIo.txt";
+        try
+        {
+            using (StreamReader reader = new StreamReader(path))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var contact = new Contact();
+                    //reader.ReadLine(); // Skip the "First Name: " line
+                    contact.firstName = reader.ReadLine().Substring(12);
+                    // reader.ReadLine(); // Skip the "Last Name: " line
+                    contact.lastName = reader.ReadLine().Substring(11);
+                    // reader.ReadLine(); // Skip the "Address: " line
+                    contact.address = reader.ReadLine().Substring(9);
+                    // reader.ReadLine(); // Skip the "City: " line
+                    contact.city = reader.ReadLine().Substring(6);
+                    // reader.ReadLine(); // Skip the "State: " line
+                    contact.state = reader.ReadLine().Substring(7);
+                    // reader.ReadLine(); // Skip the "Zipcode: " line
+                    contact.zip = reader.ReadLine().Substring(9);
+                    // reader.ReadLine(); // Skip the "Phone Number: " line
+                    contact.phoneNumber = reader.ReadLine().Substring(14);
+                    // reader.ReadLine(); // Skip the "Email: " line
+                    contact.email = reader.ReadLine().Substring(7);
+                    // reader.ReadLine(); // Skip the "-----------------------------------------------" line
+
+                    listofContacts.Add(contact);
+                }
+            }
+            Console.WriteLine($"Address book data read from {path}.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error reading from the file: {ex.Message}");
+        }
+    */
         public void DisplayContacts()
         {
             foreach (var contact in listofContacts)
