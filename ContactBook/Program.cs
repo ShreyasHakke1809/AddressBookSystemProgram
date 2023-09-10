@@ -55,6 +55,11 @@
                         address.ReadFromTextFile();
                         break;
                     case 12:
+                        //address.AddNewContact();
+                        //address.WriteToCSVFile();
+                        address.ReadFromCSVFile();
+                        break;
+                    case 13:
                         loopAgain = false;
                         break;
 

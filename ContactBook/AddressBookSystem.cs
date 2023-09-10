@@ -1,4 +1,8 @@
-﻿namespace ContactBook
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using System.Globalization;
+
+namespace ContactBook
 {
     public class AddressBookSystem
     {
@@ -353,33 +357,33 @@
                 Console.WriteLine("Address book not found.");
             }
         }
-        /* public void WriteToTextFile()
-         {
-             string path = @"C:\Users\shrey\source\repos\ContactBook\ContactBook\FileIo.txt";
-             try
-             {
-                 using (StreamWriter writer = new StreamWriter(path))
-                 {
-                     foreach (var contact in listofContacts)
-                     {
-                         writer.WriteLine($"First Name: {contact.firstName}");
-                         writer.WriteLine($"Last Name: {contact.lastName}");
-                         writer.WriteLine($"Address: {contact.address}");
-                         writer.WriteLine($"City: {contact.city}");
-                         writer.WriteLine($"State: {contact.state}");
-                         writer.WriteLine($"Zipcode: {contact.zip}");
-                         writer.WriteLine($"Phone Number: {contact.phoneNumber}");
-                         writer.WriteLine($"Email: {contact.email}");
-                         writer.WriteLine("-----------------------------------------------");
-                     }
-                 }
-                 Console.WriteLine($"Address book data written to {path}.");
-             }
-             catch (Exception ex)
-             {
-                 Console.WriteLine($"Error writing to the file: {ex.Message}");
-             }
-         }*/
+        public void WriteToTextFile()
+        {
+            string path = @"C:\Users\shrey\source\repos\ContactBook\ContactBook\FileIo.txt";
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(path))
+                {
+                    foreach (var contact in listofContacts)
+                    {
+                        writer.WriteLine($"First Name: {contact.firstName}");
+                        writer.WriteLine($"Last Name: {contact.lastName}");
+                        writer.WriteLine($"Address: {contact.address}");
+                        writer.WriteLine($"City: {contact.city}");
+                        writer.WriteLine($"State: {contact.state}");
+                        writer.WriteLine($"Zipcode: {contact.zip}");
+                        writer.WriteLine($"Phone Number: {contact.phoneNumber}");
+                        writer.WriteLine($"Email: {contact.email}");
+                        writer.WriteLine("-----------------------------------------------");
+                    }
+                }
+                Console.WriteLine($"Address book data written to {path}.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error writing to the file: {ex.Message}");
+            }
+        }
 
         public void ReadFromTextFile()
         {
@@ -394,42 +398,56 @@
             }
             Console.ReadKey();
         }
-        /*string path = @"C:\Users\shrey\source\repos\ContactBook\ContactBook\FileIo.txt";
-        try
+        public void WriteToCSVFile()
         {
-            using (StreamReader reader = new StreamReader(path))
-            {
-                while (!reader.EndOfStream)
-                {
-                    var contact = new Contact();
-                    //reader.ReadLine(); // Skip the "First Name: " line
-                    contact.firstName = reader.ReadLine().Substring(12);
-                    // reader.ReadLine(); // Skip the "Last Name: " line
-                    contact.lastName = reader.ReadLine().Substring(11);
-                    // reader.ReadLine(); // Skip the "Address: " line
-                    contact.address = reader.ReadLine().Substring(9);
-                    // reader.ReadLine(); // Skip the "City: " line
-                    contact.city = reader.ReadLine().Substring(6);
-                    // reader.ReadLine(); // Skip the "State: " line
-                    contact.state = reader.ReadLine().Substring(7);
-                    // reader.ReadLine(); // Skip the "Zipcode: " line
-                    contact.zip = reader.ReadLine().Substring(9);
-                    // reader.ReadLine(); // Skip the "Phone Number: " line
-                    contact.phoneNumber = reader.ReadLine().Substring(14);
-                    // reader.ReadLine(); // Skip the "Email: " line
-                    contact.email = reader.ReadLine().Substring(7);
-                    // reader.ReadLine(); // Skip the "-----------------------------------------------" line
+            string path = @"C:\Users\shrey\source\repos\ContactBook\ContactBook\Files\FileName.csv";
 
-                    listofContacts.Add(contact);
+            using (var writer = new StreamWriter(path))
+            using (var csvexport = new CsvWriter(writer, CultureInfo.InvariantCulture))
+
+                csvexport.WriteRecords(listofContacts);
+
+        }
+        public void ReadFromCSVFile()
+        {
+            /*string path = @"C:\Users\shrey\source\repos\ContactBook\ContactBook\Files\FileName.csv";
+
+            using (var reader = new StreamReader(path))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<Contact>().ToList();
+                {
+                    Console.WriteLine();
+                    foreach (Contact contact in records)
+                    {
+                        Console.WriteLine(contact);
+                    }
+                }
+            }*/
+            string filePath = @"C:\Users\shrey\source\repos\ContactBook\ContactBook\Files\FileName.csv";
+
+            try
+            {
+                using (StreamReader reader = new StreamReader(filePath))
+                using (CsvReader csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
+                {
+                    var records = csv.GetRecords<Contact>(); // Replace MyCsvClass with your data class
+
+                    foreach (var record in records)
+                    {
+                        // Process the data as needed
+                        Console.WriteLine(record.ToString());//$"First Name: {record.firstName}, Last Name: {record.lastName}, Email: {record.Email}");
+                    }
                 }
             }
-            Console.WriteLine($"Address book data read from {path}.");
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error reading from the file: {ex.Message}");
-        }
-    */
+
+
+
         public void DisplayContacts()
         {
             foreach (var contact in listofContacts)
@@ -439,3 +457,4 @@
         }
     }
 }
+
